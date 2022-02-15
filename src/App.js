@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import Searchpage from './pages/Searchpage';
+import Showpage from './pages/Showpage';
+import Header from './component/layout/header';
 
+import { ShowState } from './context/Showcontext';
+import { useState } from 'react';
+import { AlertState } from './context/Alertcontext'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShowState>
+      <AlertState>
+        <BrowserRouter>
+          <Header />
+
+          <Routes>
+            <Route path='/' exact element={<HomePage />} />
+            <Route path='/search' element={<Searchpage />} />
+            <Route path='/shows/:id' element={<Showpage />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
+          </Routes>
+
+        </BrowserRouter>
+      </AlertState>
+    </ShowState>
   );
 }
 
