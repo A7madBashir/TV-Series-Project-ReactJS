@@ -73,7 +73,7 @@ const Show = () => {
                 {activeShow.officialSite && (
 
                   <div className='show-info_site mb-1'>
-                    <a href={activeShow.officialSite} target='_blank'><strong>Official Site</strong></a>
+                    <a href={activeShow.officialSite} rel="noreferrer" target='_blank'><strong>Official Site</strong></a>
                   </div>
                 )}
                 {activeShow.summary && (
